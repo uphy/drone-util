@@ -1,0 +1,25 @@
+language: go
+
+go:
+  - "1.10.x"
+
+go_import_path: github.com/uphy/drone-util
+
+test:
+  - go test -v ./...
+
+script:
+  - go get github.com/mitchellh/gox
+  - gox -os="linux darwin windows" -arch="amd64 386" -output="build/{{.Dir}}_{{.OS}}_{{.Arch}}/{{.Dir}}"
+  - mkdir dist
+  - ls -1 build | xargs -I% tar zcf "dist/%.tar.gz" -C build "%"
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key: $GITHUB_TOKEN
+  file_glob: true
+  file: '$TRAVIS_BUILD_DIR/dist/*'
+  overwrite: true
+  on:
+    tags: true

@@ -1,0 +1,35 @@
+global:
+  secrets:
+    var1: value1
+  settings:
+    protected: true
+    trusted: false
+owners:
+  user1:
+    secrets:
+      http_proxy:
+        value: "{{ env "HTTP_PROXY" }}"
+        events: [push,tag,deployment]
+      https_proxy: "{{ env "HTTP_PROXY" }}"
+    settings:
+      protected: true
+      trusted: true
+    visibility: public
+    hooks:
+      pullrequest: true
+      deployment: false
+    timeout: 60
+repos:
+  user1/repo1:
+    hooks:
+      push: true
+      pullrequest: true
+      deployment: false
+    settings:
+      protected: true
+      trusted: true
+    visibility: public
+    timeout: 60
+    secrets:
+      API_TOKEN: "0123456789ABCDEF"
+  ishikura/test2:
