@@ -1,5 +1,7 @@
 # Drone Utilities
 
+[![Build Status](https://travis-ci.org/uphy/drone-util.svg?branch=master)](https://travis-ci.org/uphy/drone-util)
+
 Drone Utilities(`drone-util`) provides tools for [Drone](https://drone.io/). 
 
 ## Installation
