@@ -7,6 +7,16 @@ Drone Utilities(`drone-util`) provides tools for [Drone](https://drone.io/).
 Get the binary from the [GitHub releases page](https://github.com/uphy/drone-util/releases) and extract it.  
 You can find `drone-util`(or `drone-util.exe`).
 
+Also you can use Docker.
+
+```bash
+$ docker run --rm \
+    -e DRONE_SERVER=http://<HOSTNAME>:8000/ \
+    -e DRONE_TOKEN=<DRONETOKEN> \
+    uphy/drone-util \
+    <SUBCOMMAND>
+```
+
 ## General
 
 `drone-util` is a command with subcommands.
