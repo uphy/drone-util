@@ -5,8 +5,7 @@ go:
 
 go_import_path: github.com/uphy/drone-util
 
-test:
-  - go test -v ./...
+test: make test
 
 script: make package
 
